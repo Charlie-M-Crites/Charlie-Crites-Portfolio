@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charlie Crites - Professional Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #0d2c54;
+      --accent-color: #ce1126; /* Illinois State Red */
+      --text-color: #2b2b2b;
+      --bg-light: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-color: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-light);
+    }
+
+    /* Accessibility Focus States */
+    a:focus, button:focus {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Sections General */
+    section {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .hero-text {
+      flex: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text .tagline {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .profile-img {
+      flex: 1;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: bold;
+      text-align: center;
+      border: 4px solid var(--primary-color);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #081d38;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Experience & Skills Layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-light);
+      padding: 1.2rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--primary-color);
+      color: white;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo">Charlie Crites</a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills-projects">Skills & Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero / Home Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Charlie Crites</h1>
+        <div class="tagline">Accounting Student at Illinois State University</div>
+        <p>Welcome to my professional portfolio. I am dedicated to building practical experience, honing analytical skills, and preparing for future accounting and business opportunities.</p>
+        <div class="cta-buttons">
+          <a href="#skills-projects" class="btn btn-primary">View My Resume</a>
+          <a href="#skills-projects" class="btn btn-secondary">Explore My Projects</a>
+        </div>
+      </div>
+      <div class="profile-img" aria-label="Headshot of Charlie Crites">
+        <span>Headshot Placeholder</span>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am an accounting student at Illinois State University with a strong interest in accounting, financial analysis, and business management[cite: 2]. Through academic coursework, employment, and student organization leadership, I have developed solid foundational skills in teamwork, communication, leadership, risk awareness, and organization[cite: 2].</p>
+      <p>My goal is to continuously grow my financial expertise and secure an accounting internship where I can deliver value while learning from industry professionals[cite: 1, 2].</p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <h3>Illinois State University</h3>
+        <p><strong>Degree:</strong> Bachelor of Science in Accounting[cite: 2]</p>
+        <p><strong>Expected Graduation:</strong> 2029[cite: 2]</p>
+        <p><strong>Relevant Coursework:</strong> Accounting and Business Coursework[cite: 2].</p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Experience & Leadership</h2>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3>Market Team Member</h3>
+          <p><strong>Target</strong>[cite: 2]</p>
+          <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Stock products with high attention to detail[cite: 2].</li>
+            <li>Train new employees[cite: 2].</li>
+            <li>Support guest services in a fast-paced environment[cite: 2].</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Officer of Risk Management</h3>
+          <p><strong>Pi Sigma Epsilon</strong>[cite: 2]</p>
+          <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Oversee risk management responsibilities[cite: 3].</li>
+            <li>Participate actively in organizational activities and leadership development[cite: 2, 3].</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">Community Involvement</h3>
+      <div class="card" style="margin-top: 0.5rem;">
+        <p><strong>Volunteer:</strong> God's Helping Hands & Sts. Peter and Paul Meal Service[cite: 2]</p>
+        <p>Assisted in community volunteer efforts, supporting local meal services[cite: 2].</p>
+      </div>
+    </section>
+
+    <!-- Skills, Projects & Resume Section -->
+    <section id="skills-projects">
+      <h2>Skills, Projects & Resume</h2>
+
+      <h3>Key Skills</h3>
+      <ul class="skills-list">
+        <li class="skill-tag">Excel Certified[cite: 2]</li>
+        <li class="skill-tag">Communication[cite: 2]</li>
+        <li class="skill-tag">Teamwork[cite: 2]</li>
+        <li class="skill-tag">Leadership[cite: 2]</li>
+        <li class="skill-tag">Organization[cite: 2]</li>
+        <li class="skill-tag">Risk Awareness[cite: 2]</li>
+        <li class="skill-tag">Customer Service[cite: 2]</li>
+        <li class="skill-tag">Training[cite: 2]</li>
+      </ul>
+
+      <h3 style="margin-top: 1.5rem;">Selected Projects & Work Samples</h3>
+      <div class="grid-2" style="margin-top: 0.5rem;">
+        <div class="card">
+          <h4>Excel-Based Work & Accounting Assignments</h4>
+          <p>Selected school projects and business assignments demonstrating how I apply accounting concepts and spreadsheet functionality[cite: 3].</p>
+        </div>
+        <div class="card">
+          <h4>Presentations & Work Samples</h4>
+          <p>Coursework presentations and materials highlighting leadership, organizational skills, and risk management[cite: 2, 3].</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">Resume</h3>
+      <p>Click below to view or download my resume in PDF format[cite: 3]:</p>
+      <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Connect With Me</h2>
+      <p>I welcome connections from recruiters, accounting professionals, and collaborators[cite: 1, 3].</p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>[cite: 3, 4]</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Charlie Crites. Designed for professional development.</p>
+  </footer>
+
+</body>
+</html>
